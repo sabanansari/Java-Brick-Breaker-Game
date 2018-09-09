@@ -150,9 +150,12 @@ public class gameSetup implements Runnable, KeyListener {
         if(Ball.x>=450|| Ball.x<=22){
             movex= -movex;
         }
-        if (Ball.y<=40 ){
-            movey=-movey;
-        }
+
+            if (Ball.y <= 40) {
+                   movey = -movey;
+
+                }
+
         Ball.x+=movex;
         Ball.y+=movey;
         //here we get to know how game overed
@@ -213,7 +216,7 @@ public class gameSetup implements Runnable, KeyListener {
           drawBat(g);
           drawBricks(g);
           drawScore(g);
-          if(gameOver && score<15)
+          if(gameOver &&(score!))
               gameOver(g);
           if(score==15 && s==15)
               nextLevel(g);
