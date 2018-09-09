@@ -143,9 +143,10 @@ public class gameSetup implements Runnable, KeyListener {
     public void gameOver(Graphics g){
         g.setColor(Color.red);
         g.setFont(new Font("arial",Font.BOLD,40));
-        g.drawString("Game Over",180,300);
+        g.drawString("Game Over",160,300);
         g.drawString("Press Space to Restart",25,350);
     }
+    //
     public void tick(){
         if(Ball.x>=450|| Ball.x<=22){
             movex= -movex;
@@ -159,11 +160,15 @@ public class gameSetup implements Runnable, KeyListener {
         Ball.x+=movex;
         Ball.y+=movey;
         //here we get to know how game overed
-        if(Ball.y>530){
-            gameOver=true;
-            movey=-movey;
+        if(Ball.y>530) {
+            movey = -movey;
 
+            if (score != 15 && score != 20) {
+                gameOver = true;
+            }
         }
+
+
         if(left){
             if(Bat.x>=22)
             Bat.x-=1;
@@ -216,7 +221,7 @@ public class gameSetup implements Runnable, KeyListener {
           drawBat(g);
           drawBricks(g);
           drawScore(g);
-          if(gameOver &&(score!))
+          if(gameOver)
               gameOver(g);
           if(score==15 && s==15)
               nextLevel(g);
